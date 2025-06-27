@@ -6,7 +6,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/princemitnick/web-nginx-project.git   # remplace ton repo ici
+    repoURL: https://github.com/princemitnick/web-nginx-gitops.git
     targetRevision: HEAD
     path: overlays/dev
   destination:
