@@ -3,7 +3,7 @@ replicaCount: 3
 image:
   repository: princemitnick/web-nginx
   tag: v1
-  pullPolicy: ifNotPresent
+  pullPolicy: Always
 
 service:
   type: LoadBalancer
