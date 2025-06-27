@@ -1,0 +1,16 @@
+replicaCount: 3
+
+image:
+  repository: web001
+  tag: v1
+  pullPolicy: ifNotPresent
+
+service:
+  type: LoadBalancer
+  port: 80
+readinessProbe:
+  httpGet:
+    path: /
+    port: 80
+    initialDelaySeconds: 3
+    periodSeconds: 5

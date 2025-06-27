@@ -1,0 +1,7 @@
+resources:
+  - ../../helm-chart
+helmChartInflationGenerator:
+  - chartName: web-nginx
+    chartHome: ../../helm-chart
+    releaseName: web-nginx
+    valuesFile: values.yaml
