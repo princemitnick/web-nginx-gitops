@@ -15,7 +15,7 @@ spec:
       containers:
         - name: nginx
           image: "princemitnick/web-nginx:v1"
-          imagePullPolicy: ifNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
           readinessProbe:
