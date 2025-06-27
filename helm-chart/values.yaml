@@ -1,7 +1,7 @@
 replicaCount: 3
 
 image:
-  repository: web001
+  repository: princemitnick/web-nginx
   tag: v1
   pullPolicy: ifNotPresent
 

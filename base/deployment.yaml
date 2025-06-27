@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-nginx
+  template:
+    metadata:
+      labels:
+        app: web-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: "princemitnick/web-nginx:v1"
+          imagePullPolicy: ifNotPresent
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              initialDelaySeconds: 3
+              path: /
+              periodSeconds: 5
+              port: 80

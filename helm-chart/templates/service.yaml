@@ -3,9 +3,10 @@ kind: Service
 metadata:
   name: {{ .Chart.Name }}
 spec:
+  type: {{ .Values.service.type }}
   selector:
     app: {{ .Chart.Name }}
-  type: {{ .Values.service.type }}
   ports:
-   - protocol: TCP
-     port: {{ .Values.service.port }}
+    - protocol: TCP
+      port: {{ .Values.service.port }}
+      targetPort: 80

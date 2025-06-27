@@ -1,0 +1,42 @@
+---
+# Source: web-nginx/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: web-nginx
+spec:
+  type: LoadBalancer
+  selector:
+    app: web-nginx
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+# Source: web-nginx/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: web-nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: web-nginx
+  template:
+    metadata:
+      labels:
+        app: web-nginx
+    spec:
+      containers:
+        - name: nginx
+          image: "princemitnick/web-nginx:v1"
+          imagePullPolicy: ifNotPresent
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            httpGet:
+              initialDelaySeconds: 3
+              path: /
+              periodSeconds: 5
+              port: 80

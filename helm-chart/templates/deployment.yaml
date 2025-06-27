@@ -8,14 +8,15 @@ spec:
     matchLabels:
       app: {{ .Chart.Name }}
   template:
-    metadata: 
+    metadata:
       labels:
         app: {{ .Chart.Name }}
     spec:
       containers:
-       - name: web001
-         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
-         ports:
-          - containerPort: 80
-        readinessProbe:
-         {{- toYaml .Values.readinessProbe | nindent 12 }}
+        - name: nginx
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            {{- toYaml .Values.readinessProbe | nindent 12 }}
